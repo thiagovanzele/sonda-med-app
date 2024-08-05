@@ -1,6 +1,7 @@
 package sonda.med.app.model.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,18 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import sonda.med.app.model.enums.Especialidade;
 
 @Entity
 @Table(name = "tb_medico")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Medico implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -42,5 +35,95 @@ public class Medico implements Serializable {
 	
 	@ManyToOne()
 	private Endereco endereco;
+
+	public Medico() {
+		super();
+	}
+
+	public Medico(String nome, String email, String telefone, String crm, Especialidade especialidade,
+			Endereco endereco) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		Crm = crm;
+		this.especialidade = especialidade;
+		this.endereco = endereco;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getCrm() {
+		return Crm;
+	}
+
+	public void setCrm(String crm) {
+		Crm = crm;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medico other = (Medico) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 
 }
