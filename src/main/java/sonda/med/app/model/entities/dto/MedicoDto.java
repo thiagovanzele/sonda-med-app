@@ -1,5 +1,7 @@
 package sonda.med.app.model.entities.dto;
 
-public record MedicoDto(String nome, String email, String telefone, String crm, String especialidade, String cep, String numero) {
+import jakarta.validation.constraints.NotNull;
+
+public record MedicoDto(@NotNull String nome, @NotNull String email,@NotNull String telefone,@NotNull String crm,@NotNull String especialidade,@NotNull String cep,@NotNull String numero) {
 
 }
