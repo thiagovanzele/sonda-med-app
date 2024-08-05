@@ -4,6 +4,6 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record EnderecoDto(String cep,@JsonAlias("logradouro") String rua, String complemento, @JsonAlias("localidade")String bairro, String cidade, String uf, String numero) {
+public record EnderecoDto(String cep,@JsonAlias("logradouro") String rua, String complemento, String bairro, @JsonAlias("localidade")String cidade, String uf, String numero) {
 
 }
