@@ -6,4 +6,5 @@ import sonda.med.app.model.entities.Endereco;
 
 public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
+	public Endereco findEnderecoByCep(String cep);
 }
