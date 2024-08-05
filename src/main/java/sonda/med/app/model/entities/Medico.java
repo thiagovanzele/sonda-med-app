@@ -3,12 +3,14 @@ package sonda.med.app.model.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import sonda.med.app.model.enums.Especialidade;
@@ -22,18 +24,24 @@ public class Medico implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(nullable = false)
 	private String nome;
 	
+	@Column(nullable = false)
 	private String email;
 	
+	@Column(nullable = false)
 	private String telefone;
 	
-	private String Crm;
+	@Column(nullable = false)
+	private String crm;
 	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Especialidade especialidade;
 	
 	@ManyToOne()
+	@JoinColumn(nullable = false)
 	private Endereco endereco;
 
 	public Medico() {
@@ -46,7 +54,7 @@ public class Medico implements Serializable {
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
-		Crm = crm;
+		this.crm = crm;
 		this.especialidade = especialidade;
 		this.endereco = endereco;
 	}
@@ -84,11 +92,11 @@ public class Medico implements Serializable {
 	}
 
 	public String getCrm() {
-		return Crm;
+		return crm;
 	}
 
 	public void setCrm(String crm) {
-		Crm = crm;
+		this.crm = crm;
 	}
 
 	public Especialidade getEspecialidade() {
