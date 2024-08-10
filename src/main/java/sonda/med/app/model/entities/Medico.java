@@ -40,9 +40,13 @@ public class Medico implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Especialidade especialidade;
 	
+	@Column(nullable = false)
+	private Boolean ativo;
+	
 	@ManyToOne()
 	@JoinColumn(nullable = false)
 	private Endereco endereco;
+	
 
 	public Medico() {
 		super();
@@ -50,13 +54,13 @@ public class Medico implements Serializable {
 
 	public Medico(String nome, String email, String telefone, String crm, Especialidade especialidade,
 			Endereco endereco) {
-		super();
 		this.nome = nome;
 		this.email = email;
 		this.telefone = telefone;
 		this.crm = crm;
 		this.especialidade = especialidade;
 		this.endereco = endereco;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -113,6 +117,14 @@ public class Medico implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override
