@@ -20,7 +20,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import jakarta.validation.Valid;
 import sonda.med.app.model.entities.Medico;
-import sonda.med.app.model.entities.dto.request.MedicoDto;
+import sonda.med.app.model.entities.dto.request.MedicoCadastroDto;
+import sonda.med.app.model.entities.dto.response.MedicoDetalhadoResponseDto;
 import sonda.med.app.model.entities.dto.response.MedicoResponseDto;
 import sonda.med.app.model.entities.dto.update.MedicoUpdateDto;
 import sonda.med.app.model.services.MedicoService;
@@ -34,14 +35,15 @@ public class MedicoController {
 	private MedicoService service;
 	
 	@PostMapping
-	public ResponseEntity<Medico> insert(@Valid @RequestBody MedicoDto medicoDto) {
+	public ResponseEntity<MedicoDetalhadoResponseDto> insert(@Valid @RequestBody MedicoCadastroDto medicoDto) {
 		Medico medico = service.insert(medicoDto);
+		MedicoDetalhadoResponseDto medicoDetalhado = new MedicoDetalhadoResponseDto(medico);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(medico.getId())
+				.buildAndExpand(medicoDetalhado.id())
 				.toUri();
 		
-		return ResponseEntity.created(uri).body(medico);
+		return ResponseEntity.created(uri).body(medicoDetalhado);
 	}
 	
 	@GetMapping("/{id}")
@@ -64,10 +66,10 @@ public class MedicoController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<MedicoResponseDto> update(@PathVariable Long id, @RequestBody @Valid MedicoUpdateDto medicoDto) {
+	public ResponseEntity<MedicoDetalhadoResponseDto> update(@PathVariable Long id, @RequestBody @Valid MedicoUpdateDto medicoDto) {
 		Medico medico = service.update(id, medicoDto);
-		MedicoResponseDto medicoResponse = new MedicoResponseDto(medico);
-		return ResponseEntity.ok(medicoResponse);
+		MedicoDetalhadoResponseDto medicoDetalhado = new MedicoDetalhadoResponseDto(medico);
+		return ResponseEntity.ok(medicoDetalhado);
 	}
 
 }
