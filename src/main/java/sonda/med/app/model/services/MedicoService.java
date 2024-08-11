@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import sonda.med.app.model.entities.Endereco;
 import sonda.med.app.model.entities.Medico;
-import sonda.med.app.model.entities.dto.request.MedicoDto;
+import sonda.med.app.model.entities.dto.request.MedicoCadastroDto;
 import sonda.med.app.model.entities.dto.response.MedicoResponseDto;
 import sonda.med.app.model.entities.dto.update.MedicoUpdateDto;
 import sonda.med.app.model.enums.Especialidade;
@@ -25,7 +25,7 @@ public class MedicoService {
 	private EnderecoService enderecoService;
 
 	@Transactional
-	public Medico insert(MedicoDto medicoDto) {
+	public Medico insert(MedicoCadastroDto medicoDto) {
 		Endereco endereco = enderecoService.insert(medicoDto.cep(), medicoDto.numero());
 
 		Medico medico = new Medico();
