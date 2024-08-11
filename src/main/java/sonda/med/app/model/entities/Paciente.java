@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,19 +23,23 @@ public class Paciente implements Serializable {
 	
 	private String email;
 	
-	private String CPF;
+	private String telefone;
 	
+	private String cpf;
+	
+	@ManyToOne
 	private Endereco endereco;
 
 	public Paciente() {
 		super();
 	}
 
-	public Paciente(String nome, String email, String cPF, Endereco endereco) {
+	public Paciente(String nome, String email, String telefone, String cpf, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.email = email;
-		CPF = cPF;
+		this.cpf = cpf;
+		this.telefone = telefone;
 		this.endereco = endereco;
 	}
 
@@ -62,12 +67,12 @@ public class Paciente implements Serializable {
 		this.email = email;
 	}
 
-	public String getCPF() {
-		return CPF;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCPF(String cPF) {
-		CPF = cPF;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Endereco getEndereco() {
@@ -77,10 +82,18 @@ public class Paciente implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(CPF, id);
+		return Objects.hash(cpf, id);
 	}
 
 	@Override
@@ -92,7 +105,7 @@ public class Paciente implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Paciente other = (Paciente) obj;
-		return Objects.equals(CPF, other.CPF) && Objects.equals(id, other.id);
+		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id);
 	}
 	
 	
