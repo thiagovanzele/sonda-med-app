@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class StandardError implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -11,17 +14,17 @@ public class StandardError implements Serializable {
 	private Integer status;
 	private String error;
 	private String path;
+	private String mensagem;
 	private Map<String, String> validationErrors;
 
 	public StandardError() {
 	}
 
-	public StandardError(Instant timestamp, Integer status, String error, String path, Map<String, String> validationErrors) {
+	public StandardError(Instant timestamp, Integer status, String error, String path) {
 		this.timestamp = timestamp;
 		this.status = status;
 		this.error = error;
 		this.path = path;
-		this.validationErrors = validationErrors;
 	}
 
 	public Instant getTimestamp() {
@@ -56,6 +59,14 @@ public class StandardError implements Serializable {
 		this.path = path;
 	}
 
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
 	public Map<String, String> getValidationErrors() {
 		return validationErrors;
 	}
@@ -63,7 +74,5 @@ public class StandardError implements Serializable {
 	public void setValidationErrors(Map<String, String> validationErrors) {
 		this.validationErrors = validationErrors;
 	}
-	
-	
 
 }
