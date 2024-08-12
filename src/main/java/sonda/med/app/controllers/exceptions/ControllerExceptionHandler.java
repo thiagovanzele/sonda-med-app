@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ValidationException;
 import sonda.med.app.model.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -45,6 +46,15 @@ public class ControllerExceptionHandler {
 		err.setMensagem(e.getMessage());
 		return ResponseEntity.status(status).body(err);
 		
+	}
+	
+	@ExceptionHandler(ValidationException.class)
+	public ResponseEntity<StandardError> validationException(ValidationException e, HttpServletRequest request) {
+		String error = "Erro de validacao";
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		StandardError err = new StandardError(Instant.now(), status.value(), error, request.getRequestURI());
+		err.setMensagem(e.getMessage());
+		return ResponseEntity.status(status).body(err);
 	}
 
 }
