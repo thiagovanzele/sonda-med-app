@@ -18,15 +18,17 @@ public class Paciente implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	private String email;
-	
+
 	private String telefone;
-	
+
 	private String cpf;
-	
+
+	private boolean ativo;
+
 	@ManyToOne
 	private Endereco endereco;
 
@@ -82,13 +84,21 @@ public class Paciente implements Serializable {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	public String getTelefone() {
 		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override
@@ -107,7 +117,5 @@ public class Paciente implements Serializable {
 		Paciente other = (Paciente) obj;
 		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id);
 	}
-	
-	
 
 }
