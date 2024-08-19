@@ -12,6 +12,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
+import jakarta.validation.ValidationException;
 import sonda.med.app.model.entities.Usuario;
 
 @Service
@@ -43,7 +44,7 @@ public class TokenService {
                     .verify(tokenJWT)
                     .getSubject();
         } catch (JWTVerificationException exception) {
-            throw new RuntimeException("Token JWT inválido ou expirado!");
+            throw new ValidationException("Token JWT inválido ou expirado!");
         }
     }
 
