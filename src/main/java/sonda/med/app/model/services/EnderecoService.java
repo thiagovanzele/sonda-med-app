@@ -18,9 +18,9 @@ public class EnderecoService {
 	private EnderecoRepository enderecoRepository;
 	
 	public Endereco insert(String cep, String numero) {
-		Endereco endereco = enderecoRepository.findEnderecoByCep(cep);
+		Endereco endereco = enderecoRepository.findEnderecoByCepAndNumero(cep, numero);
 		
-		if (endereco != null && endereco.getNumero().equals(numero)) {
+		if (endereco != null) {
 			return endereco;
 		}				
 				
