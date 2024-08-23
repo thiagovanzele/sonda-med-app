@@ -20,6 +20,6 @@ public class ValidaHorarioDisponivelMedico implements ValidadorAgendamentoDeCons
 			throw new ValidationException("Médico já possuí consulta agendada para esse horario");
 		}
 		
-		
+
 	}
 }

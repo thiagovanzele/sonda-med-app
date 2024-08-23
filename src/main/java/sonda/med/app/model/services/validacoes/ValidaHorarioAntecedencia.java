@@ -19,5 +19,6 @@ public class ValidaHorarioAntecedencia implements ValidadorAgendamentoDeConsulta
 			throw new ValidationException("A consulta deve ser agendada com 30 minutos de antecedencia");
 		}
 		
+		
 	}
 }

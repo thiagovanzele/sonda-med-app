@@ -4,20 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jakarta.validation.ValidationException;
-import sonda.med.app.model.entities.Paciente;
 import sonda.med.app.model.entities.dto.request.ConsultaCadastroDto;
-import sonda.med.app.model.services.PacienteService;
+import sonda.med.app.model.repositories.PacienteRepository;
 
 @Component
 public class ValidaPacienteAtivo implements ValidadorAgendamentoDeConsulta {
 	
 	@Autowired
-	private PacienteService service;
+	private PacienteRepository repository;
 
 	public void validarAgendamento(ConsultaCadastroDto dados) {
-		Paciente paciente = service.findById(dados.pacienteId());
+		Boolean pacienteAtivo = repository.findAtivoById(dados.pacienteId());
 		
-		if (!paciente.isAtivo()) {
+		if (!pacienteAtivo) {
 			throw new ValidationException("O paciente deve estar ativo para realizar o agendamento");
 		}
 	}
