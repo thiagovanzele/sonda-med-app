@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import sonda.med.app.model.entities.Medico;
 import sonda.med.app.model.entities.dto.request.MedicoCadastroDto;
@@ -29,6 +30,7 @@ import sonda.med.app.model.services.MedicoService;
 @Validated
 @RestController
 @RequestMapping("/medicos")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 	
 	@Autowired
