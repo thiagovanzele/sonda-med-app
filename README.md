@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O projeto Sonda Med é uma aplicação Java desenvolvida com Spring Boot, que simula a rotina de um consultório médico, onde são inserios médicos, pacientes e são possíveis realizar agendamentos e cancelar os mesmos.
+O projeto Sonda Med é uma aplicação Java desenvolvida com Spring Boot, que simula a rotina de um consultório médico, onde são inserios médicos, pacientes e possui agendamentos e cancelamentos de consultas.
 
 ## Funcionalidades
 
@@ -75,6 +75,12 @@ Antes de iniciar a aplicação, você precisa configurar as propriedades do banc
 3. **Inserir um usuário para autenticação** diretamente em seu banco de dados.
    
 4. **Realizar login** através do endpoint localhost:8080/login e inserir o token em cada requisição que for disparada.
+
+***Exemplo de Login***
+- ![Login](https://github.com/thiagovanzele/sonda-med-app/blob/main/src/main/resources/templates/imagens/login.jpg)
+
+***Exemplo de Requisição enviando token***
+- ![Login](https://github.com/thiagovanzele/sonda-med-app/blob/main/src/main/resources/templates/imagens/getMedicos.jpg)
 
 ## Uso
 
