@@ -72,6 +72,10 @@ Antes de iniciar a aplicação, você precisa configurar as propriedades do banc
 
    spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 
+3. **Inserir um usuário para autenticação** diretamente em seu banco de dados.
+   
+4. **Realizar login** através do endpoint localhost:8080/login e inserir o token em cada requisição que for disparada.
+
 ## Uso
 
 Após iniciar a aplicação, você pode acessar a API REST através do endpoint:
@@ -87,9 +91,8 @@ Após iniciar a aplicação, você pode acessar a API REST através do endpoint:
 
 ## Exemplos 
 
-***:***
-- ![Requisições]()
-
+***Requisições e endpoints disponíveis***
+- ![Requisições](https://github.com/thiagovanzele/sonda-med-app/blob/main/src/main/resources/templates/imagens/requisicoes.jpg)
 
 ## Licença
 
