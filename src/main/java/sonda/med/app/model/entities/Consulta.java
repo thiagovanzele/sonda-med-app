@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import sonda.med.app.model.enums.MotivoCancelamento;
 
 @Entity
 @Table(name = "tb_consulta")
@@ -25,8 +26,12 @@ public class Consulta implements Serializable {
 
 	@ManyToOne
 	private Medico medico;
-	
+
 	private LocalDateTime data;
+
+	private boolean ativo;
+	
+	private MotivoCancelamento motivoCancelamento;
 
 	public Consulta() {
 	}
@@ -35,6 +40,7 @@ public class Consulta implements Serializable {
 		this.paciente = paciente;
 		this.medico = medico;
 		this.data = data;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -67,6 +73,22 @@ public class Consulta implements Serializable {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
+	public MotivoCancelamento getMotivoCancelamento() {
+		return motivoCancelamento;
+	}
+
+	public void setMotivoCancelamento(MotivoCancelamento motivoCancelamento) {
+		this.motivoCancelamento = motivoCancelamento;
 	}
 
 	@Override
